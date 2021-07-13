@@ -32,6 +32,7 @@ dependencies:
   dio_cache_interceptor: ^3.0.1
   dio_cookie_manager: ^2.0.0
   flutter_screenutil: ^4.0.3+3
+  flare_flutter: ^3.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
