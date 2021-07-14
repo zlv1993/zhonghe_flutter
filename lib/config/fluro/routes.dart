@@ -9,7 +9,7 @@ class Routes {
 
   static void configureRoutes(FluroRouter router){
     router.define(communicateUrl, handler: communicateHandler);
-    router.define(splashUrl, handler: splashHandler);
+    router.define(splashUrl, handler: loginHandler);
     router.define(eventUrl, handler: eventHandler);
     router.define(homeUrl, handler: homeHandler);
     router.define(personalUrl, handler: personalHandler);

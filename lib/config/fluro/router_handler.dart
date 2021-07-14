@@ -4,7 +4,7 @@ import 'package:zhongheflutter/page/event.dart';
 import 'package:zhongheflutter/page/home.dart';
 import 'package:zhongheflutter/page/personal.dart';
 import 'package:zhongheflutter/page/splash.dart';
-
+import 'package:zhongheflutter/page/login.dart';
 
 //通讯中心
 var communicateHandler = Handler(handlerFunc: ( context, params) {
@@ -34,5 +34,11 @@ var personalHandler = Handler(
 var splashHandler = Handler(
   handlerFunc: ( context,params) {
     return Splash();
+  },
+);
+//闪屏页
+var loginHandler = Handler(
+  handlerFunc: ( context,params) {
+    return LoginPage();
   },
 );
