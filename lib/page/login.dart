@@ -13,7 +13,14 @@ class _MyHomePageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: buildEle(context)
+      body:Container(
+        width:double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.amber
+        ),
+        child: _container(context)
+      )
     );
 
   }
@@ -23,7 +30,7 @@ class _MyHomePageState extends State<LoginPage> {
       children: [
         FlareActor( "assets/Teddy.flr", alignment:Alignment.center,  fit:BoxFit.contain, animation:_animateStatus),
         Positioned(
-          right: 60,
+            right: 60,
             top:60,
             child: FlatButton(onPressed:(){
               if(_toogleIndex==animates.length-1){
@@ -43,4 +50,66 @@ class _MyHomePageState extends State<LoginPage> {
     );
 
   }
+
+  Widget _container(BuildContext context){
+    return UnconstrainedBox(
+        child:Container(
+      decoration: BoxDecoration(
+          color:Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(6))
+      ),
+      width: 300.w,
+      height:300.h,
+      padding: EdgeInsets.symmetric(vertical: 40.0.h,horizontal: 20.0.w),
+      child: Column(
+        children: [
+
+        TextFormField(
+        maxLines: 1,
+        keyboardType: TextInputType.emailAddress,
+        autofocus: false,
+        style: TextStyle(fontSize: 15),
+        decoration: new InputDecoration(
+            hintText: '请输入帐号',
+          contentPadding: new EdgeInsets.symmetric(vertical:5.0, horizontal: 10.0), //内边距设置
+
+           //border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),//圆角设置
+           ),
+        ),
+        Container(
+          height: 20.h,
+        ), 
+          TextFormField(
+            maxLines: 1,
+            keyboardType: TextInputType.emailAddress,
+            autofocus: false,
+            obscureText: true,
+            style: TextStyle(fontSize: 15),
+            decoration: new InputDecoration(
+              hintText: '请输入密码',
+              contentPadding: new EdgeInsets.symmetric(vertical:5.0, horizontal: 10.0), //内边距设置
+            ),
+          ),
+          Container(
+            height: 40.h,
+          ),
+          SizedBox(
+            width: double.infinity,
+            height: 45.h,
+            child: RaisedButton(
+                onPressed: (){},
+                color: Colors.amber,
+                highlightColor: Colors.amber[700],
+                shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                child:Text("提交")
+            ),
+          )
+
+        ],
+      ),
+
+    ) )  ;
+  }
+
+
 }
