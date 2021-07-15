@@ -3,24 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class LoginPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _LoginPageState createState() => new _LoginPageState();
 }
 
-class _MyHomePageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> {
   String _animateStatus="idle";
   List<String> animates=["idle","test","fail","success","hands_up"];
   int _toogleIndex=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Container(
-        width:double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.amber
-        ),
-        child: _container(context)
-      )
+      body: MyHomePage(),
+
     );
 
   }
@@ -28,7 +22,7 @@ class _MyHomePageState extends State<LoginPage> {
   Widget buildEle(BuildContext context)  {
     return Stack(
       children: [
-        FlareActor( "assets/Teddy.flr", alignment:Alignment.center,  fit:BoxFit.contain, animation:_animateStatus),
+        FlareActor( "assets/teddy.flr", alignment:Alignment.center,  fit:BoxFit.contain, animation:_animateStatus),
         Positioned(
             right: 60,
             top:60,
@@ -112,4 +106,18 @@ class _MyHomePageState extends State<LoginPage> {
   }
 
 
+}
+
+
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => new _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return new FlareActor("assets/button-animation.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:"idle");
+  }
 }
