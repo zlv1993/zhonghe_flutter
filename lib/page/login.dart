@@ -1,4 +1,4 @@
-import 'package:flare_flutter/flare_actor.dart';
+import 'package:smart_flare/smart_flare.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class LoginPage extends StatefulWidget {
@@ -13,7 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MyHomePage(),
+      body:MyHomePage()
 
     );
 
@@ -22,7 +22,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget buildEle(BuildContext context)  {
     return Stack(
       children: [
-        FlareActor( "assets/teddy.flr", alignment:Alignment.center,  fit:BoxFit.contain, animation:_animateStatus),
         Positioned(
             right: 60,
             top:60,
@@ -118,6 +117,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new FlareActor("assets/button-animation.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:"idle");
+    return new SmartFlareActor(
+      filename: 'assets/teddy_wrong_password.flr',
+      startingAnimation: 'idle',
+
+    );
+
   }
 }
