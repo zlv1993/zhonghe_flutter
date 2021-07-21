@@ -1,6 +1,7 @@
 import 'package:smart_flare/smart_flare.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zhongheflutter/config/fluro/navigator_util.dart';
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => new _LoginPageState();
@@ -8,41 +9,39 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String _animateStatus="idle";
-  List<String> animates=["idle","test","fail","success","hands_up"];
+  List<String> animates=["idle","test","fail","success"];
   int _toogleIndex=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:MyHomePage()
+      body:Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+        ),
+        child: Center(
+          child: Column(
+          mainAxisAlignment:MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height:300.h,
+              width:200.w,
+              child: MyHomePage(),
+            )
+            ,
+            _container(context)
+          ],
+        ),)
+      )
+
+
 
     );
 
   }
 
-  Widget buildEle(BuildContext context)  {
-    return Stack(
-      children: [
-        Positioned(
-            right: 60,
-            top:60,
-            child: FlatButton(onPressed:(){
-              if(_toogleIndex==animates.length-1){
 
-                _toogleIndex=0;
-              }else{
-                _toogleIndex++;
-              }
-              setState(() {
-                _animateStatus=animates[_toogleIndex];
-              });
-
-            },
-                child: Text("切换状态")))
-
-      ],
-    );
-
-  }
 
   Widget _container(BuildContext context){
     return UnconstrainedBox(
@@ -52,8 +51,8 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.all(Radius.circular(6))
       ),
       width: 300.w,
-      height:300.h,
-      padding: EdgeInsets.symmetric(vertical: 40.0.h,horizontal: 20.0.w),
+      height:320.h,
+      padding: EdgeInsets.symmetric(vertical: 20.0.h,horizontal: 20.0.w),
       child: Column(
         children: [
 
@@ -64,12 +63,11 @@ class _LoginPageState extends State<LoginPage> {
         style: TextStyle(fontSize: 15),
         decoration: new InputDecoration(
             hintText: '请输入帐号',
-          contentPadding: new EdgeInsets.symmetric(vertical:5.0, horizontal: 10.0), //内边距设置
-
+           contentPadding: new EdgeInsets.symmetric(horizontal: 10.0), //内边距设置
            //border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),//圆角设置
            ),
         ),
-        Container(
+        SizedBox(
           height: 20.h,
         ), 
           TextFormField(
@@ -80,19 +78,20 @@ class _LoginPageState extends State<LoginPage> {
             style: TextStyle(fontSize: 15),
             decoration: new InputDecoration(
               hintText: '请输入密码',
-              contentPadding: new EdgeInsets.symmetric(vertical:5.0, horizontal: 10.0), //内边距设置
+              contentPadding: new EdgeInsets.symmetric(horizontal: 10.0), //内边距设置
             ),
           ),
-          Container(
-            height: 40.h,
+          SizedBox(
+            height: 20.h,
           ),
           SizedBox(
             width: double.infinity,
             height: 45.h,
             child: RaisedButton(
-                onPressed: (){},
-                color: Colors.amber,
-                highlightColor: Colors.amber[700],
+                onPressed: (){
+                  NavigatorUtil.detailPage(context,url:'/home');
+                },
+                color: Theme.of(context).primaryColor,
                 shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                 child:Text("提交")
             ),
@@ -120,7 +119,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return new SmartFlareActor(
       filename: 'assets/teddy_wrong_password.flr',
       startingAnimation: 'idle',
-
     );
 
   }

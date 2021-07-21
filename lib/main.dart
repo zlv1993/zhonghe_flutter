@@ -3,6 +3,7 @@ import 'package:zhongheflutter/config/fluro/routes.dart';
 import 'package:zhongheflutter/config/fluro/application.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:zhongheflutter/utils/myColors.dart';
 
 import 'config/dio/http_client.dart';
 import 'config/dio/http_config.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primaryColor:  Color(0xFF63CA6C),
           ),
           onGenerateRoute: Application.router.generator,
         ));
