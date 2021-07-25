@@ -5,7 +5,7 @@ import 'http_transformer.dart';
 class DefaultHttpTransformer extends HttpTransformer {
   @override
   HttpResponse parse(Response response) {
-    if (response.data["code"] == 1 && response.data["msg"] == "成功") {
+    if (response.data["code"] == 200) {
       return HttpResponse.success(response.data["data"]);
     } else {
       return HttpResponse.failure(

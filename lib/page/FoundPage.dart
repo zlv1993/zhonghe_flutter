@@ -1,6 +1,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class FoundPage extends StatelessWidget {
@@ -12,6 +13,7 @@ class FoundPage extends StatelessWidget {
 
   static const double IMAGE_ICON_WIDTH = 30.0;
   static const double ARROW_ICON_WIDTH = 16.0;
+  final ImagePicker _picker = ImagePicker();
 
   final imagePaths = [
     "images/ic_discover_softwares.png",
@@ -111,9 +113,11 @@ class FoundPage extends StatelessWidget {
     }
   }
 
-  void handleListItemClick(BuildContext ctx, ListItem item) {
+  void handleListItemClick(BuildContext ctx, ListItem item) async {
     String title = item.title;
     if (title == "扫一扫") {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+       print(image);
 
     }
   }
